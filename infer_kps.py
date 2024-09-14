@@ -84,7 +84,7 @@ def infer():
             pose_image = get_draw(id_image, size=512)
             for k in range(3):
                 result_img = makeup_encoder.generate(id_image=[id_image, pose_image], makeup_image=makeup_image,
-                                                     pipe=pipe, guidance_scale=0.5 + 0.5 * k)
+                                                     pipe=pipe, guidance_scale=1 + 0.5 * k)
                 result_img.save(os.path.join(out_folder, name.split(".")[0] + "_" + mu.split(".")[0] + "_" + str(k) + ".jpg"))
 
 if __name__ == '__main__':
