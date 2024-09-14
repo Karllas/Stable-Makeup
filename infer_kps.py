@@ -2,7 +2,7 @@ import os
 import torch
 from PIL import Image
 from diffusers import UNet2DConditionModel as OriginalUNet2DConditionModel
-from utils.pipeline_sd15 import StableDiffusionControlNetPipeline
+from pipeline_sd15 import StableDiffusionControlNetPipeline
 from diffusers import DDIMScheduler, DPMSolverMultistepScheduler, ControlNetModel
 from diffusers.utils import load_image
 from detail_encoder.encoder_plus import detail_encoder
