@@ -40,7 +40,7 @@ def concatenate_images(image_files, output_file):
         x_offset += img.width
     combined.save(output_file)
 
-model_id = "sd_model_v1-5". # your sdv1-5 path
+model_id = "bdsqlsz/stable-diffusion-v1-5" # your sdv1-5 path
 makeup_encoder_path = "./models/stablemakeup/pytorch_model.bin"
 id_encoder_path = "./models/stablemakeup/pytorch_model_1.bin"
 pose_encoder_path = "./models/stablemakeup/pytorch_model_2.bin"
