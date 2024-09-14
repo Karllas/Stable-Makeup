@@ -25,7 +25,7 @@ class detail_encoder(torch.nn.Module):
         self.dtype = dtype
 
         # load image encoder
-        clip_encoder = OriginalCLIPVisionModel.from_pretrained(image_encoder_path)
+        clip_encoder = OriginalCLIPVisionModel.from_pretrained(image_encoder_path, attn_implementation="eager")
         self.image_encoder = CLIPVisionModel(clip_encoder.config)
         state_dict = clip_encoder.state_dict()
         self.image_encoder.load_state_dict(state_dict, strict=False)
