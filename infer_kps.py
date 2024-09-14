@@ -67,7 +67,7 @@ pipe = StableDiffusionControlNetPipeline.from_pretrained(
     controlnet=[id_encoder, pose_encoder],
     torch_dtype=torch.float32).to("cuda")
 # pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
-pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config, algorithm_type="sde-dpmsolver++", solver_order=2)
+pipe.scheduler = DPMSolverMultistepScheduler.from_config(model_id, subfolder="scheduler", algorithm_type="sde-dpmsolver++", solver_order=2)
 
 def infer():
     id_folder = "./test_imgs/id"
@@ -85,7 +85,7 @@ def infer():
             pose_image = get_draw(id_image, size=512)
             for k in range(2):
                 result_img = makeup_encoder.generate(id_image=[id_image, pose_image], makeup_image=makeup_image,
-                                                     pipe=pipe, guidance_scale=1.5 + 0.5 * k, num_inference_steps=50)
+                                                     pipe=pipe, guidance_scale=1.01 + 0.5 * k, num_inference_steps=50)
                 result_img.save(os.path.join(out_folder, name.split(".")[0] + "_" + mu.split(".")[0] + "_" + str(k) + ".jpg"))
 
 if __name__ == '__main__':
