@@ -48,7 +48,7 @@ Unet = OriginalUNet2DConditionModel.from_pretrained(model_id, subfolder="unet").
 
 id_encoder = ControlNetModel.from_unet(Unet)
 pose_encoder = ControlNetModel.from_unet(Unet)
-makeup_encoder = detail_encoder(Unet, "openai/clip-vit-large-patch14", "cuda", dtype=torch.float32)
+makeup_encoder = detail_encoder(Unet, "./models/image_encoder_l", "cuda", dtype=torch.float32)
 makeup_state_dict = torch.load(makeup_encoder_path)
 id_state_dict = torch.load(id_encoder_path)
 id_encoder.load_state_dict(id_state_dict, strict=False)
